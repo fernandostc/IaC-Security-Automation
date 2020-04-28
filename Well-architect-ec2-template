@@ -1,0 +1,65 @@
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+        Ref: InstanceType
+      SecurityGroups:
+      - Ref: InstanceSecurityGroup
+      KeyName:
+        Ref: Test
+      Monitoring: 'false'
+      IamInstanceProfile: 
+      - Ref: ProfileStageEnv
+      ImageId:
+        Fn::FindInMap:
+        - AWSRegionArch2AMI
+        - Ref: AWS::Region
+        - Fn::FindInMap:
+          - AWSInstanceType2Arch
+          - Ref: InstanceType
+          - Arch
+      Tags:
+        - 
+          Key: "Environment"
+          Value: "Stage"
+        - 
+          Key: "Role"
+          Value: "Security"
+        - 
+          Key: "Owner"
+          Value: "SecTeam"
+        - 
+          Key: "Name"
+          Value: "Stage-EC2-Lab_Env"
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      GroupName: SecinCloud
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp:
+          Ref: SSHLocation
+      Tags:
+        - 
+          Key: "Environment"
+          Value: "Stage"
+        - 
+          Key: "Role"
+          Value: "Security"
+        - 
+          Key: "Owner"
+          Value: "SecTeam"
+        - 
+          Key: "Name"
+          Value: "Stage-SecGroup-Lab_Env"
+  IamInstanceProfile: 
+    Type: AWS::IAM::InstanceProfile
+    Properties: 
+      InstanceProfileName: ProfileStageEnv
+      Path: String
+      Roles: 
+        - String
