@@ -1,1 +1,1 @@
-# IaC-Article-Well-Architect-EC2
+# Infrastructure-as-a-Code Security Automation
