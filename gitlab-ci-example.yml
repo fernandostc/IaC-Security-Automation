@@ -1,0 +1,24 @@
+image: fernandostc/automation_scan_iac:latest
+
+stages:
+  - Conformity_Template_Scanner
+  - Build_Cloud_Formation_Template
+
+# Stages - CI Pipeline
+Conformity_Template_Scanner: 
+    stage: Conformity_Template_Scanner
+    script:
+    - pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/requirements.txt
+    - wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/src/scanner.py
+    - python3 scanner.py
+    - echo $CFN_TEMPLATE_FILE_LOCATION
+    artifacts:
+        when: on_failure
+        paths:
+        - findings.json
+
+#Cloud Formation Template - Build Process
+Build_Cloud_Formation_Template:
+  stage: Build_Cloud_Formation_Template
+  script:
+  - aws cloudformation deploy --template-file ./cloudformation.yml --stack-name Test-Environment --no-fail-on-empty-changeset
