@@ -3,7 +3,7 @@
 ![](Diagram/Example_of_diagram_architecture.png)
 
 Here is a Cloud Formation template based in the AWS Well-Architected Frramework for tests with Template Scanner:
-- CFT Example: Well-architect-ec2-template.yml
+- CFT Example: Well-architect-ec2-template.yml (https://github.com/fernandostc/IaC-Security-Automation/blob/master/Well-architect-ec2-template.yml)
 
 
 ## VSCode Plugin for Cloud One - Conformity (by Raphael Bottino)
