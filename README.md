@@ -3,6 +3,9 @@
 ![](Diagram/Example_of_diagram_architecture.png)
 
 
+## VSCode Plugin for Cloud One - Conformity (by Raphael Bottino)
+- https://marketplace.visualstudio.com/items?itemName=raphaelbottino.cc-template-scanner
+
 ## Gitlab CI file Example (gitlab-ci-example.yml)
 Variable Configuration Needed:
 
