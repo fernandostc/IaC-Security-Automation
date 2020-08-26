@@ -6,7 +6,10 @@
 ## VSCode Plugin for Cloud One - Conformity (by Raphael Bottino)
 - https://marketplace.visualstudio.com/items?itemName=raphaelbottino.cc-template-scanner
 
-## Gitlab CI file Example (gitlab-ci-example.yml)
+## Gitlab CI file Example for Template Scanner for CloudFormation Templates (gitlab-ci-example.yml)
+
+Using the template scanner from Will Robison (https://github.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner)
+
 Variable Configuration Needed:
 
 - AWS_ACCESS_KEY_ID
