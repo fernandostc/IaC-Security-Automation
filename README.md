@@ -19,3 +19,16 @@ Variable Configuration Needed:
 - CC_REGION
 - CC_RISK_LEVEL
 - CFN_TEMPLATE_FILE_LOCATION
+
+## GitHub Actions by (Felipe Costa and Raphael Bottino)
+
+- https://github.com/marketplace/actions/cloud-one-conformity-pipeline-scanner
+
+Variable Configuration Needed:
+
+- cc_apikey (Cloud One Conformity API KEY)
+- cc_region (Cloud One Conformity account region)
+- templatePath (Path of the template to be scanned)
+- maxExtreme | maxVeryHigh | maxHigh | maxMedium | maxLow (Choose one or more of the options and set a number of how many violations are accepted)
+
+PS.: ALWAYS use secrets to expose your credentials!
