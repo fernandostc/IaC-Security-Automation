@@ -35,3 +35,15 @@ Variable Configuration Needed:
 - maxExtreme | maxVeryHigh | maxHigh | maxMedium | maxLow (Choose one or more of the options and set a number of how many violations are accepted)
 
 PS.: ALWAYS use secrets to expose your credentials!
+
+## AWS CodeBuild - buildspec file Example for Template Scanner using CloudFormation Templates (buildspec.yml)
+
+Using the template scanner from Will Robison (https://github.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner) - Python
+
+Variable Configuration Needed:
+
+- CC_API_KEY = <YOUR API KEY FROM CLOUD ONE - CONFORMITY>
+- CC_REGION = <REGION SELECTED TO CREATE YOUR CONFORMITY TENANT>
+- CC_RISK_LEVEL = <RISK LEVEL NOT BE ACCEPT>
+- CFN_TEMPLATE_FILE_LOCATION = <YOUR CLOUDFORMATION TEMPLATE PATH>
+- STACK_NAME = <THE CLOUDFORMATION STACK NAME>
