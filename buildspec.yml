@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+    install:
+        runtime-versions:
+            python: 3.7
+    pre_build:
+        commands:
+            - pip3 install awscli --upgrade --user
+    build:
+        commands:
+            - pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/requirements.txt
+            - wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/src/scanner.py
+            - CC_API_KEY=`jq -r '.CC_API_KEY' <<< $CC_API_KEY`
+            - python3 scanner.py
+            
+    post_build:
+        commands:
+            - aws cloudformation deploy --template-file $CFN_TEMPLATE_FILE_LOCATION --stack-name $STACK_NAME --no-fail-on-empty-changeset
