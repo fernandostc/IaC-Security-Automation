@@ -1,3 +1,5 @@
+Build specifications: Insert build commands
+Build Commands:
 version: 0.2
 phases:
     install:
@@ -11,8 +13,12 @@ phases:
             - pip3 install -r https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/requirements.txt
             - wget https://raw.githubusercontent.com/OzNetNerd/Cloud-Conformity-Pipeline-Scanner/master/src/scanner.py
             - CC_API_KEY=`jq -r '.CC_API_KEY' <<< $CC_API_KEY`
-            - python3 scanner.py
+            - echo $CC_API_KEY
+            - python3 scanner.py &> output.json
             
     post_build:
         commands:
             - aws cloudformation deploy --template-file $CFN_TEMPLATE_FILE_LOCATION --stack-name $STACK_NAME --no-fail-on-empty-changeset
+artifacts:
+  files:
+    - output.json
